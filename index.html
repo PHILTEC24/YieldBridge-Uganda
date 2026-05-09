@@ -151,7 +151,70 @@
       </div>
     </div>
   </section>
+  
+<!-- FEATURE: FAQ Accordion Section -->
+<section style="background:#f9f9f9; padding:60px 20px;">
+  <div style="max-width:800px; margin:0 auto;">
+    <h2 style="text-align:center; color:#2e7d32; margin-bottom:36px;">Frequently Asked Questions</h2>
 
+    <div class="faq-item" style="border-bottom:1px solid #ddd; margin-bottom:12px;">
+      <button onclick="toggleFaq(this)" style="width:100%;text-align:left;background:none;border:none;
+        font-size:1.05rem;font-weight:600;padding:16px 0;cursor:pointer;color:#333;">
+        How do I register as a farmer? <span style="float:right;">+</span>
+      </button>
+      <div class="faq-answer" style="display:none; padding:0 0 16px; color:#555; line-height:1.7;">
+        Click on the "Farmers" page from the navigation, fill in your name, phone number, district,
+        and primary crops. Once submitted, your profile becomes visible to buyers across Uganda.
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-bottom:1px solid #ddd; margin-bottom:12px;">
+      <button onclick="toggleFaq(this)" style="width:100%;text-align:left;background:none;border:none;
+        font-size:1.05rem;font-weight:600;padding:16px 0;cursor:pointer;color:#333;">
+        How does a buyer place an order? <span style="float:right;">+</span>
+      </button>
+      <div class="faq-answer" style="display:none; padding:0 0 16px; color:#555; line-height:1.7;">
+        Visit the Marketplace, browse available produce from verified farmers, and click "Place Order"
+        on any listing. You can compare prices across districts before ordering.
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-bottom:1px solid #ddd; margin-bottom:12px;">
+      <button onclick="toggleFaq(this)" style="width:100%;text-align:left;background:none;border:none;
+        font-size:1.05rem;font-weight:600;padding:16px 0;cursor:pointer;color:#333;">
+        How do transporters receive delivery jobs? <span style="float:right;">+</span>
+      </button>
+      <div class="faq-answer" style="display:none; padding:0 0 16px; color:#555; line-height:1.7;">
+        Register your vehicle on the Transport page, then browse open delivery requests.
+        Submit a bid with your price and estimated delivery time. The farmer/buyer selects the best offer.
+      </div>
+    </div>
+
+    <div class="faq-item" style="border-bottom:1px solid #ddd; margin-bottom:12px;">
+      <button onclick="toggleFaq(this)" style="width:100%;text-align:left;background:none;border:none;
+        font-size:1.05rem;font-weight:600;padding:16px 0;cursor:pointer;color:#333;">
+        Is Yield Bridge Uganda free to use? <span style="float:right;">+</span>
+      </button>
+      <div class="faq-answer" style="display:none; padding:0 0 16px; color:#555; line-height:1.7;">
+        Basic registration and browsing are free for all users. A small service fee applies
+        only when a transaction is completed through the platform.
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.style.display === 'block';
+    document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+    document.querySelectorAll('.faq-item button span').forEach(s => s.textContent = '+');
+    if (!isOpen) {
+      answer.style.display = 'block';
+      btn.querySelector('span').textContent = '−';
+    }
+  }
+</script>
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
