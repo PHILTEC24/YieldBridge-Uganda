@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Market News | Yield Bridge Uganda</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Yield Bridge Uganda" class="logo-icon" onerror="this.style.display='none'">
+        <div class="logo-text">YIELD BRIDGE<span>UGANDA</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="farmers.html">Farmers</a></li>
+        <li><a href="marketplace.html">Marketplace</a></li>
+        <li><a href="transporters.html">Transport</a></li>
+        <li><a href="news.html" class="active">News</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn btn-outline">Sign In</button>
+        <button class="btn btn-primary">Get Started</button>
+      </div>
+      <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.toggle('active')">
+        <svg width="24" height="24" fill="none" stroke="#2d6a4f" viewBox="0 0 24 24"><path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="farmers.html">Farmers</a>
+    <a href="marketplace.html">Marketplace</a>
+    <a href="transporters.html">Transport</a>
+    <a href="news.html" class="active">News</a>
+  </div>
+
+  <section class="page-hero hero-news">
+    <div class="hero-container">
+      <div class="hero-text">
+        <span class="badge">Market Intelligence</span>
+        <h1>Market News & Price Trends</h1>
+        <p>Stay informed with the latest agricultural market prices, news, and insights from across Uganda.</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="section">
+    <div class="section-container">
+      <!-- Price Table -->
+      <h2 style="font-size:1.8rem; font-weight:700; margin-bottom:20px;">Current Market Prices (UGX/kg)</h2>
+      <div class="price-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Crop</th>
+              <th>Avg Price</th>
+              <th>Change (7d)</th>
+              <th>Trend</th>
+              <th>Volume</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Matooke</strong></td>
+              <td>1,500</td>
+              <td class="price-up">+3.2%</td>
+              <td><span style="color:#10b981;">▲</span></td>
+              <td>12,500 tons</td>
+            </tr>
+            <tr>
+              <td><strong>Maize (Dried)</strong></td>
+              <td>1,200</td>
+              <td class="price-down">-1.5%</td>
+              <td><span style="color:#ef4444;">▼</span></td>
+              <td>28,000 tons</td>
+            </tr>
+            <tr>
+              <td><strong>Coffee Robusta</strong></td>
+              <td>8,500</td>
+              <td class="price-up">+5.1%</td>
+              <td><span style="color:#10b981;">▲</span></td>
+              <td>4,200 tons</td>
+            </tr>
+            <tr>
+              <td><strong>Rice (Paddy)</strong></td>
+              <td>2,800</td>
+              <td class="price-neutral">0.0%</td>
+              <td><span style="color:#6b7280;">—</span></td>
+              <td>8,700 tons</td>
+            </tr>
+            <tr>
+              <td><strong>Beans</strong></td>
+              <td>3,200</td>
+              <td class="price-up">+2.8%</td>
+              <td><span style="color:#10b981;">▲</span></td>
+              <td>15,300 tons</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- News Articles -->
+      <h2 style="font-size:1.8rem; font-weight:700; margin-bottom:20px;">Latest Market News</h2>
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="news-image">
+            <img src="assets/images/news-coffee.jpg" alt="Coffee news" onerror="this.parentElement.style.background='#d1fae5'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;font-size:2rem;\'>☕</p>'">
+          </div>
+          <div class="news-content">
+            <div class="news-tag tag-export">EXPORT</div>
+            <h3>Uganda Coffee Exports Hit Record High in 2026</h3>
+            <p>Coffee exports surpassed 6.5 million bags, with Robusta leading the surge due to increased global demand.</p>
+            <div class="news-footer">
+              <span class="news-date">May 6, 2026</span>
+              <a href="#" class="news-link">Read More →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <div class="news-image">
+            <img src="assets/images/news-rain.jpg" alt="Weather" onerror="this.parentElement.style.background='#dbeafe'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;font-size:2rem;\'>🌧️</p>'">
+          </div>
+          <div class="news-content">
+            <div class="news-tag tag-weather">WEATHER</div>
+            <h3>Heavy Rains Expected: Impact on Harvest Schedules</h3>
+            <p>UNMA forecasts above-average rainfall this season, which may affect planting schedules in Eastern Uganda.</p>
+            <div class="news-footer">
+              <span class="news-date">May 4, 2026</span>
+              <a href="#" class="news-link">Read More →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <div class="news-image">
+            <img src="assets/images/news-market.jpg" alt="Trade" onerror="this.parentElement.style.background='#fef3c7'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;font-size:2rem;\'>📊</p>'">
+          </div>
+          <div class="news-content">
+            <div class="news-tag tag-trade">TRADE</div>
+            <h3>New Regional Trade Agreement Opens EAC Markets</h3>
+            <p>East African Community members sign new agreement reducing tariffs on agricultural produce.</p>
+            <div class="news-footer">
+              <span class="news-date">May 2, 2026</span>
+              <a href="#" class="news-link">Read More →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-text">
+          YIELD BRIDGE
+          <span>UGANDA</span>
+        </div>
+        <p>Connecting Uganda's agricultural ecosystem through technology.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="farmers.html">Farmers</a></li>
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="transporters.html">Transport</a></li>
+          <li><a href="news.html">Market News</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>Kampala, Uganda</li>
+          <li>info@yieldbridge.ug</li>
+          <li>+256 700 123 456</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Yield Bridge Uganda. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farmers | Yield Bridge Uganda</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Yield Bridge Uganda" class="logo-icon" onerror="this.style.display='none'">
+        <div class="logo-text">
+          YIELD BRIDGE
+          <span>UGANDA</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="farmers.html" class="active">Farmers</a></li>
+        <li><a href="marketplace.html">Marketplace</a></li>
+        <li><a href="transporters.html">Transport</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn btn-outline">Sign In</button>
+        <button class="btn btn-primary">Get Started</button>
+      </div>
+      <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.toggle('active')">
+        <svg width="24" height="24" fill="none" stroke="#2d6a4f" viewBox="0 0 24 24">
+          <path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="farmers.html" class="active">Farmers</a>
+    <a href="marketplace.html">Marketplace</a>
+    <a href="transporters.html">Transport</a>
+    <a href="news.html">News</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="page-hero hero-farmers">
+    <div class="hero-container">
+      <div class="hero-text">
+        <span class="badge">Farmer Portal</span>
+        <h1>Register & List Your Produce</h1>
+        <p>Join thousands of Ugandan farmers reaching buyers directly. List your crops, manage your garden, and get fair prices.</p>
+      </div>
+      <div class="hero-image-box">
+        <img src="assets/images/matooke.jpg" alt="Fresh produce" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:white;\'>🌿<br>matooke.jpg</div>'">
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="section">
+    <div class="section-container">
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="register">Register Profile</button>
+        <button class="tab-btn" data-tab="garden">Map Garden</button>
+        <button class="tab-btn" data-tab="listing">List Produce</button>
+        <button class="tab-btn" data-tab="my-listings">My Listings</button>
+      </div>
+
+      <!-- Tab: Register -->
+      <div class="tab-content active" id="tab-register">
+        <div class="form-card">
+          <h2>Create Your Farmer Profile</h2>
+          <form id="farmerForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" placeholder="e.g., Okello James" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="+256 7XX XXX XXX" required>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="farmer@example.com" required>
+              </div>
+              <div class="form-group">
+                <label>District</label>
+                <select required>
+                  <option value="">Select District</option>
+                  <option>Kampala</option>
+                  <option>Wakiso</option>
+                  <option>Mukono</option>
+                  <option>Masaka</option>
+                  <option>Mbarara</option>
+                  <option>Jinja</option>
+                  <option>Gulu</option>
+                  <option>Lira</option>
+                </select>
+              </div>
+              <div class="form-group full-width">
+                <label>Farm/Garden Location</label>
+                <input type="text" placeholder="Village/Sub-county, e.g., Mukono, Namanve">
+              </div>
+              <div class="form-group full-width">
+                <label>Primary Crops</label>
+                <div class="checkbox-grid">
+                  <label class="checkbox-label"><input type="checkbox"> Matooke</label>
+                  <label class="checkbox-label"><input type="checkbox"> Maize</label>
+                  <label class="checkbox-label"><input type="checkbox"> Coffee</label>
+                  <label class="checkbox-label"><input type="checkbox"> Rice</label>
+                  <label class="checkbox-label"><input type="checkbox"> Beans</label>
+                  <label class="checkbox-label"><input type="checkbox"> Cassava</label>
+                  <label class="checkbox-label"><input type="checkbox"> Soybeans</label>
+                  <label class="checkbox-label"><input type="checkbox"> Other</label>
+                </div>
+              </div>
+              <div class="form-group full-width">
+                <label>Profile Photo</label>
+                <div class="upload-area" onclick="document.getElementById('farmerPhoto').click()">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  <p>Click to upload photo (JPG, PNG)</p>
+                  <input type="file" id="farmerPhoto" style="display:none" accept="image/*">
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Register Profile</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tab: Map Garden -->
+      <div class="tab-content" id="tab-garden">
+        <div style="background:white; border-radius:16px; padding:40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+          <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:10px;">Map Your Garden Location</h2>
+          <p style="color:#6b7280; margin-bottom:25px;">Use the map below to mark your farm location. Buyers use this to calculate transport costs.</p>
+          <div style="display:grid; grid-template-columns: 2fr 1fr; gap:25px;">
+            <div style="background:#f0fdf4; border-radius:12px; height:350px; display:flex; align-items:center; justify-content:center; border:2px dashed #2d6a4f;">
+              <div style="text-align:center;">
+                <svg width="50" height="50" fill="none" stroke="#2d6a4f" viewBox="0 0 24 24" style="margin:0 auto 10px;"><path stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                <p style="color:#2d6a4f; font-weight:600;">Interactive Garden Map</p>
+                <p style="color:#6b7280; font-size:0.85rem;">Add Google Maps integration here</p>
+                <button class="btn btn-primary" style="margin-top:15px;">Pin My Location</button>
+              </div>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+              <div style="padding:15px; background:#f0fdf4; border-radius:10px;">
+                <h4 style="font-weight:600; color:#065f46; margin-bottom:8px;">Garden Details</h4>
+                <p style="font-size:0.85rem; color:#6b7280;">District: <strong style="color:#1a1a1a;">Mukono</strong></p>
+                <p style="font-size:0.85rem; color:#6b7280;">Village: <strong style="color:#1a1a1a;">Namanve</strong></p>
+                <p style="font-size:0.85rem; color:#6b7280;">Size: <strong style="color:#1a1a1a;">5 Acres</strong></p>
+              </div>
+              <div style="padding:15px; background:#eff6ff; border-radius:10px;">
+                <h4 style="font-weight:600; color:#1e40af; margin-bottom:8px;">Nearby Transporters</h4>
+                <p style="font-size:0.85rem; color:#6b7280;">12 drivers within 10km radius</p>
+              </div>
+              <div style="padding:15px; background:#fefce8; border-radius:10px;">
+                <h4 style="font-weight:600; color:#92400e; margin-bottom:8px;">Distance to Market</h4>
+                <p style="font-size:0.85rem; color:#6b7280;">Kampala: ~25km</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab: List Produce -->
+      <div class="tab-content" id="tab-listing">
+        <div class="form-card">
+          <h2>List Your Produce</h2>
+          <form id="produceForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Crop Type</label>
+                <select required>
+                  <option value="">Select Crop</option>
+                  <option>Matooke (Banana)</option>
+                  <option>Maize</option>
+                  <option>Coffee (Robusta)</option>
+                  <option>Coffee (Arabica)</option>
+                  <option>Rice</option>
+                  <option>Beans</option>
+                  <option>Cassava</option>
+                  <option>Soybeans</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Quantity (kg)</label>
+                <input type="number" placeholder="e.g., 1000" required>
+              </div>
+              <div class="form-group">
+                <label>Price per kg (UGX)</label>
+                <input type="number" placeholder="e.g., 1500" required>
+              </div>
+              <div class="form-group">
+                <label>Harvest Date</label>
+                <input type="date" required>
+              </div>
+              <div class="form-group full-width">
+                <label>Produce Photos</label>
+                <div class="upload-area" onclick="document.getElementById('producePhotos').click()">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  <p>Upload photos of your produce (up to 5)</p>
+                  <input type="file" id="producePhotos" style="display:none" accept="image/*" multiple>
+                </div>
+              </div>
+              <div class="form-group full-width">
+                <label>Quality Notes</label>
+                <textarea rows="3" placeholder="Describe quality, organic certification, etc."></textarea>
+              </div>
+            </div>
+            <div style="display:flex; gap:12px; margin-top:20px;">
+              <button type="submit" class="btn btn-primary">List Produce</button>
+              <button type="reset" class="btn" style="background:#e5e7eb; color:#374151;">Clear</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Tab: My Listings -->
+      <div class="tab-content" id="tab-my-listings">
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-image">
+              <img src="assets/images/matooke.jpg" alt="Matooke" onerror="this.parentElement.style.background='#d1fae5'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;color:#065f46;\'>🍌</p>'">
+              <span class="product-badge badge-green">Active</span>
+              <span class="product-qty">2,000 kg</span>
+            </div>
+            <div class="product-info">
+              <h4>Matooke (Premium)</h4>
+              <p class="farmer">Harvested: June 15, 2026</p>
+              <div class="product-price">UGX 1,500 <span>/kg</span></div>
+              <div class="product-actions">
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn" style="background:#fef2f2; color:#dc2626;">Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+              <img src="assets/images/maize.jpg" alt="Maize" onerror="this.parentElement.style.background='#fef3c7'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;color:#92400e;\'>🌽</p>'">
+              <span class="product-badge badge-green">Active</span>
+              <span class="product-qty">5,000 kg</span>
+            </div>
+            <div class="product-info">
+              <h4>Maize (Dried)</h4>
+              <p class="farmer">Harvested: May 28, 2026</p>
+              <div class="product-price">UGX 1,200 <span>/kg</span></div>
+              <div class="product-actions">
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn" style="background:#fef2f2; color:#dc2626;">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-text">
+          YIELD BRIDGE
+          <span>UGANDA</span>
+        </div>
+        <p>Connecting Uganda's agricultural ecosystem through technology.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="farmers.html">Farmers</a></li>
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="transporters.html">Transport</a></li>
+          <li><a href="news.html">Market News</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>Kampala, Uganda</li>
+          <li>info@yieldbridge.ug</li>
+          <li>+256 700 123 456</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Yield Bridge Uganda. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

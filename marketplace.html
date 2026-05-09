@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketplace | Yield Bridge Uganda</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Yield Bridge Uganda" class="logo-icon" onerror="this.style.display='none'">
+        <div class="logo-text">YIELD BRIDGE<span>UGANDA</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="farmers.html">Farmers</a></li>
+        <li><a href="marketplace.html" class="active">Marketplace</a></li>
+        <li><a href="transporters.html">Transport</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn btn-outline">Sign In</button>
+        <button class="btn btn-primary">Get Started</button>
+      </div>
+      <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.toggle('active')">
+        <svg width="24" height="24" fill="none" stroke="#2d6a4f" viewBox="0 0 24 24"><path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="farmers.html">Farmers</a>
+    <a href="marketplace.html" class="active">Marketplace</a>
+    <a href="transporters.html">Transport</a>
+    <a href="news.html">News</a>
+  </div>
+
+  <section class="page-hero hero-marketplace">
+    <div class="hero-container">
+      <div class="hero-text">
+        <span class="badge">Buyer & Trader Portal</span>
+        <h1>Browse & Buy Fresh Produce</h1>
+        <p>Connect directly with farmers across Uganda. Compare prices, place orders, and arrange delivery.</p>
+      </div>
+      <div class="hero-image-box">
+        <img src="assets/images/matooke-market.jpg" alt="Marketplace" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:white;\'><br>marketplace.jpg</div>'">
+      </div>
+    </div>
+  </section>
+
+  <main class="section">
+    <div class="section-container">
+      <!-- Search -->
+      <div class="search-bar">
+        <div class="search-row">
+          <div class="search-input-wrapper">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" id="marketSearch" placeholder="Search crops, farmers, or districts...">
+          </div>
+          <select class="search-select">
+            <option>All Categories</option>
+            <option>Grains</option>
+            <option>Fruits</option>
+            <option>Tubers</option>
+            <option>Coffee</option>
+          </select>
+          <select class="search-select">
+            <option>All Districts</option>
+            <option>Kampala</option>
+            <option>Wakiso</option>
+            <option>Mukono</option>
+            <option>Masaka</option>
+          </select>
+          <select class="search-select">
+            <option>Sort: Newest</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Products -->
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-image">
+            <img src="assets/images/matooke-market.jpg" alt="Matooke" onerror="this.parentElement.style.background='#d1fae5'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;font-size:2rem;color:#065f46;\'></p>'">
+            <span class="product-badge badge-green">FRESH</span>
+            <span class="product-qty">2,000 kg</span>
+          </div>
+          <div class="product-info">
+            <h4>Matooke (Premium Grade)</h4>
+            <p class="farmer">by Okello Farms • Mukono</p>
+            <div class="product-rating"><span class="star">★★★★★</span> 4.8 (42 reviews)</div>
+            <div class="product-price">UGX 1,500 <span>/kg</span></div>
+            <div class="product-actions">
+              <button class="btn btn-primary">Place Order</button>
+              <button class="btn" style="background:#f9fafb; border:1px solid #d1d5db;">♡</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="assets/images/maize-market.jpg" alt="Maize" onerror="this.parentElement.style.background='#fef3c7'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;font-size:2rem;color:#92400e;\'>🌽</p>'">
+            <span class="product-badge badge-yellow">BULK</span>
+            <span class="product-qty">10,000 kg</span>
+          </div>
+          <div class="product-info">
+            <h4>Maize Grain (Dried)</h4>
+            <p class="farmer">by Nakato Agro • Wakiso</p>
+            <div class="product-rating"><span class="star">★★★★☆</span> 4.5 (28 reviews)</div>
+            <div class="product-price">UGX 1,200 <span>/kg</span></div>
+            <div class="product-actions">
+              <button class="btn btn-primary">Place Order</button>
+              <button class="btn" style="background:#f9fafb; border:1px solid #d1d5db;">♡</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-image">
+            <img src="assets/images/coffee-market.jpg" alt="Coffee" onerror="this.parentElement.style.background='#ede9fe'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;font-size:2rem;color:#7c3aed;\'>☕</p>'">
+            <span class="product-badge badge-purple">EXPORT</span>
+            <span class="product-qty">3,000 kg</span>
+          </div>
+          <div class="product-info">
+            <h4>Coffee Robusta (AA)</h4>
+            <p class="farmer">by Kibuuka Estate • Masaka</p>
+            <div class="product-rating"><span class="star">★★★★★</span> 4.9 (67 reviews)</div>
+            <div class="product-price">UGX 8,500 <span>/kg</span></div>
+            <div class="product-actions">
+              <button class="btn btn-primary">Place Order</button>
+              <button class="btn" style="background:#f9fafb; border:1px solid #d1d5db;">♡</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-text">
+          YIELD BRIDGE
+          <span>UGANDA</span>
+        </div>
+        <p>Connecting Uganda's agricultural ecosystem through technology.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="farmers.html">Farmers</a></li>
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="transporters.html">Transport</a></li>
+          <li><a href="news.html">Market News</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>Kampala, Uganda</li>
+          <li>info@yieldbridge.ug</li>
+          <li>+256 700 123 456</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Yield Bridge Uganda. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

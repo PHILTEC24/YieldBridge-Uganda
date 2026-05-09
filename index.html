@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yield Bridge Uganda | Connecting Farmers to Markets</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Yield Bridge Uganda" class="logo-icon" onerror="this.style.display='none'">
+        <div class="logo-text">
+          YIELD BRIDGE
+          <span>UGANDA</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="farmers.html">Farmers</a></li>
+        <li><a href="marketplace.html">Marketplace</a></li>
+        <li><a href="transporters.html">Transport</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn btn-outline">Sign In</button>
+        <button class="btn btn-primary">Get Started</button>
+      </div>
+      <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.toggle('active')">
+        <svg width="24" height="24" fill="none" stroke="#2d6a4f" viewBox="0 0 24 24">
+          <path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="active">Home</a>
+    <a href="farmers.html">Farmers</a>
+    <a href="marketplace.html">Marketplace</a>
+    <a href="transporters.html">Transport</a>
+    <a href="news.html">News</a>
+    <div style="padding-top: 15px; display: flex; gap: 10px;">
+      <button class="btn btn-outline" style="flex: 1;">Sign In</button>
+      <button class="btn btn-primary" style="flex: 1;">Get Started</button>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero-home">
+    <div class="hero-container">
+      <div class="hero-text">
+        <span class="badge">🌾 Uganda's Premier Agricultural Platform</span>
+        <h1>Bridging <span>Farmers</span> to Markets Across Uganda</h1>
+        <p>Connect with buyers, find reliable transporters, and grow your agricultural business with Uganda's integrated marketplace platform.</p>
+        <div class="hero-buttons">
+          <a href="farmers.html" class="btn btn-yellow">I'm a Farmer</a>
+          <a href="marketplace.html" class="btn btn-white">I'm a Buyer</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item"><h3>5,000+</h3><p>Farmers</p></div>
+          <div class="stat-item"><h3>1,200+</h3><p>Traders</p></div>
+          <div class="stat-item"><h3>800+</h3><p>Trucks</p></div>
+        </div>
+      </div>
+      <div class="hero-image-box">
+        <img src="assets/images/hero-farm.jpg" alt="Ugandan farmland" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:white;\'><br>hero-farm.jpg</div>'">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>How Yield Bridge Works</h2>
+        <p>A complete ecosystem connecting every stakeholder in Uganda's agricultural supply chain.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon green">
+            <svg width="28" height="28" fill="none" stroke="#065f46" viewBox="0 0 24 24"><path stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3>Farmer Module</h3>
+          <p>Register your profile, map your garden locations, and list produce with photos, quantities, and expected prices.</p>
+          <a href="farmers.html" class="feature-link">Learn More →</a>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon yellow">
+            <svg width="28" height="28" fill="none" stroke="#92400e" viewBox="0 0 24 24"><path stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3>Buyer Marketplace</h3>
+          <p>Browse products, compare prices from different farmers, and place orders directly with real-time market news.</p>
+          <a href="marketplace.html" class="feature-link">Learn More →</a>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon blue">
+            <svg width="28" height="28" fill="none" stroke="#1e40af" viewBox="0 0 24 24"><path stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
+          </div>
+          <h3>Transport Logistics</h3>
+          <p>Truck drivers receive delivery requests and bid to transport goods from rural farms to urban centers.</p>
+          <a href="transporters.html" class="feature-link">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section class="section section-alt">
+    <div class="section-container">
+      <div class="section-header">
+        <h2>Simple Steps to Get Started</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <h4>Register</h4>
+          <p>Create your profile as a farmer, buyer, or transporter</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <h4>List or Browse</h4>
+          <p>Farmers list produce, buyers browse the marketplace</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <h4>Connect & Order</h4>
+          <p>Place orders and arrange transport logistics</p>
+        </div>
+        <div class="step-item">
+          <div class="step-number">4</div>
+          <h4>Deliver</h4>
+          <p>Track shipments and receive goods safely</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-box">
+      <h2>Ready to Transform Your Agricultural Business?</h2>
+      <p>Join thousands of Ugandan farmers, traders, and transporters already using Yield Bridge.</p>
+      <div class="cta-buttons">
+        <a href="farmers.html" class="btn btn-yellow">Start as Farmer</a>
+        <a href="marketplace.html" class="btn btn-white">Start as Buyer</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-text">
+          YIELD BRIDGE
+          <span>UGANDA</span>
+        </div>
+        <p>Connecting Uganda's agricultural ecosystem through technology.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="farmers.html">Farmers</a></li>
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="transporters.html">Transport</a></li>
+          <li><a href="news.html">Market News</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>Kampala, Uganda</li>
+          <li>info@yieldbridge.ug</li>
+          <li>+256 700 123 456</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Yield Bridge Uganda. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

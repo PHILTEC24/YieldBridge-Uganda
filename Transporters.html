@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transporters | Yield Bridge Uganda</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Yield Bridge Uganda" class="logo-icon" onerror="this.style.display='none'">
+        <div class="logo-text">YIELD BRIDGE<span>UGANDA</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="farmers.html">Farmers</a></li>
+        <li><a href="marketplace.html">Marketplace</a></li>
+        <li><a href="transporters.html" class="active">Transport</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn btn-outline">Sign In</button>
+        <button class="btn btn-blue">Get Started</button>
+      </div>
+      <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.toggle('active')">
+        <svg width="24" height="24" fill="none" stroke="#2d6a4f" viewBox="0 0 24 24"><path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="farmers.html">Farmers</a>
+    <a href="marketplace.html">Marketplace</a>
+    <a href="transporters.html" class="active">Transport</a>
+    <a href="news.html">News</a>
+  </div>
+
+  <section class="page-hero hero-transporters">
+    <div class="hero-container">
+      <div class="hero-text">
+        <span class="badge">Transport Logistics Portal</span>
+        <h1>Move Goods, Earn More</h1>
+        <p>Receive delivery requests, bid on shipments, and transport produce from farms to markets across Uganda.</p>
+      </div>
+      <div class="hero-image-box">
+        <img src="assets/images/news-market.jpg" alt="Transport" onerror="this.parentElement.innerHTML='<div style=\'text-align:center;color:white;\'>🚛<br>transport.jpg</div>'">
+      </div>
+    </div>
+  </section>
+
+  <main class="section">
+    <div class="section-container">
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card"><div class="label">Active Deliveries</div><div class="value text-blue">3</div></div>
+        <div class="stat-card"><div class="label">Pending Bids</div><div class="value text-yellow">5</div></div>
+        <div class="stat-card"><div class="label">Completed Trips</div><div class="value text-green">47</div></div>
+        <div class="stat-card"><div class="label">Earnings (UGX)</div><div class="value text-dark">12.5M</div></div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-btn active active-blue" data-tab="requests">Delivery Requests</button>
+        <button class="tab-btn" data-tab="my-bids">My Bids</button>
+        <button class="tab-btn" data-tab="vehicle">Vehicle Profile</button>
+      </div>
+
+      <!-- Requests -->
+      <div class="tab-content active" id="tab-requests">
+        <div class="request-card">
+          <div class="request-header">
+            <span class="request-badge badge-new">NEW</span>
+            <span class="request-time">Posted 2 hours ago</span>
+          </div>
+          <h4>Matooke Delivery • 2,000 kg</h4>
+          <div class="request-details">
+            <div class="request-detail">📍 From: <strong>Mukono, Namanve</strong></div>
+            <div class="request-detail">📍 To: <strong>Kampala, Nakasero Market</strong></div>
+            <div class="request-detail">⏰ Deadline: <strong>Tomorrow 8AM</strong></div>
+          </div>
+          <div class="request-meta">
+            <span>~25 km</span>
+            <span>•</span>
+            <span>Budget: <strong class="price">UGX 350,000</strong></span>
+            <span>•</span>
+            <span>7 bids placed</span>
+          </div>
+          <div class="request-actions">
+            <button class="btn btn-blue" onclick="openBidModal('Matooke', 'Mukono → Kampala')">Place Bid</button>
+            <button class="btn" style="background:#f9fafb; border:1px solid #d1d5db;">View Details</button>
+          </div>
+        </div>
+
+        <div class="request-card">
+          <div class="request-header">
+            <span class="request-badge badge-urgent">URGENT</span>
+            <span class="request-time">Posted 5 hours ago</span>
+          </div>
+          <h4>Maize Grain Delivery • 5,000 kg</h4>
+          <div class="request-details">
+            <div class="request-detail">📍 From: <strong>Wakiso, Nansana</strong></div>
+            <div class="request-detail"> To: <strong>Jinja, Main Market</strong></div>
+            <div class="request-detail">⏰ Deadline: <strong>Today 6PM</strong></div>
+          </div>
+          <div class="request-meta">
+            <span>~80 km</span>
+            <span>•</span>
+            <span>Budget: <strong class="price">UGX 800,000</strong></span>
+            <span>•</span>
+            <span>12 bids placed</span>
+          </div>
+          <div class="request-actions">
+            <button class="btn btn-blue" onclick="openBidModal('Maize', 'Wakiso → Jinja')">Place Bid</button>
+            <button class="btn" style="background:#f9fafb; border:1px solid #d1d5db;">View Details</button>
+          </div>
+        </div>
+
+        <div class="request-card">
+          <div class="request-header">
+            <span class="request-badge badge-bulk">BULK</span>
+            <span class="request-time">Posted 1 day ago</span>
+          </div>
+          <h4>Coffee Beans Delivery • 3,000 kg</h4>
+          <div class="request-details">
+            <div class="request-detail">📍 From: <strong>Masaka, Kyotera</strong></div>
+            <div class="request-detail">📍 To: <strong>Kampala, Export Hub</strong></div>
+            <div class="request-detail">⏰ Deadline: <strong>3 days</strong></div>
+          </div>
+          <div class="request-meta">
+            <span>~120 km</span>
+            <span>•</span>
+            <span>Budget: <strong class="price">UGX 1,200,000</strong></span>
+            <span>•</span>
+            <span>5 bids placed</span>
+          </div>
+          <div class="request-actions">
+            <button class="btn btn-blue" onclick="openBidModal('Coffee', 'Masaka → Kampala')">Place Bid</button>
+            <button class="btn" style="background:#f9fafb; border:1px solid #d1d5db;">View Details</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- My Bids -->
+      <div class="tab-content" id="tab-my-bids">
+        <div style="text-align:center; padding:60px 20px; color:#6b7280;">
+          <svg width="60" height="60" fill="none" stroke="#d1d5db" viewBox="0 0 24 24" style="margin:0 auto 15px;"><path stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <h3 style="font-size:1.2rem; font-weight:600; margin-bottom:8px;">No Active Bids</h3>
+          <p>Your submitted bids will appear here.</p>
+        </div>
+      </div>
+
+      <!-- Vehicle Profile -->
+      <div class="tab-content" id="tab-vehicle">
+        <div class="form-card">
+          <h2>Vehicle Profile</h2>
+          <form>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Vehicle Type</label>
+                <select><option>Truck (10-ton)</option><option>Truck (5-ton)</option><option>Van</option><option>Pickup</option></select>
+              </div>
+              <div class="form-group">
+                <label>Registration Number</label>
+                <input type="text" placeholder="e.g., UBA 123X">
+              </div>
+              <div class="form-group">
+                <label>Driver's License</label>
+                <input type="text" placeholder="License number">
+              </div>
+              <div class="form-group">
+                <label>Years of Experience</label>
+                <input type="number" placeholder="e.g., 5">
+              </div>
+              <div class="form-group full-width">
+                <label>Vehicle Photo</label>
+                <div class="upload-area"><p>🚛 Upload vehicle photo</p><input type="file" style="display:none" accept="image/*"></div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-blue" style="margin-top:20px;">Save Profile</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bid Modal -->
+  <div class="modal-overlay" id="bidModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Place Your Bid</h3>
+        <button class="modal-close" onclick="closeBidModal()">✕</button>
+      </div>
+      <div class="modal-info">
+        <p>Delivery: <strong id="modalCrop"></strong></p>
+        <p>Route: <strong id="modalRoute"></strong></p>
+      </div>
+      <form id="bidForm">
+        <div class="form-group">
+          <label>Your Bid Amount (UGX)</label>
+          <input type="number" placeholder="e.g., 400000" required>
+        </div>
+        <div class="form-group">
+          <label>Estimated Delivery Time</label>
+          <select required>
+            <option>Same Day</option>
+            <option>Within 12 Hours</option>
+            <option>Within 24 Hours</option>
+            <option>2-3 Days</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Vehicle Details</label>
+          <input type="text" placeholder="e.g., Isuzu FVR 10-ton, UBA 123X">
+        </div>
+        <button type="submit" class="btn btn-blue" style="width:100%; margin-top:15px;">Submit Bid</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-text">
+          YIELD BRIDGE
+          <span>UGANDA</span>
+        </div>
+        <p>Connecting Uganda's agricultural ecosystem through technology.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="farmers.html">Farmers</a></li>
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="transporters.html">Transport</a></li>
+          <li><a href="news.html">Market News</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>Kampala, Uganda</li>
+          <li>info@yieldbridge.ug</li>
+          <li>+256 700 123 456</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Yield Bridge Uganda. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    function openBidModal(crop, route) {
+      document.getElementById('modalCrop').textContent = crop;
+      document.getElementById('modalRoute').textContent = route;
+      document.getElementById('bidModal').classList.add('active');
+    }
+    function closeBidModal() {
+      document.getElementById('bidModal').classList.remove('active');
+    }
+    document.getElementById('bidForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Bid submitted successfully!');
+      closeBidModal();
+    });
+    document.getElementById('bidModal').addEventListener('click', function(e) {
+      if (e.target === this) closeBidModal();
+    });
+  </script>
+</body>
+</html>
