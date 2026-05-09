@@ -87,3 +87,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
   console.log('Yield Bridge Uganda loaded successfully');
 });
+// === FEATURE: Scroll to Top Button ===
+(function () {
+  const btn = document.createElement('button');
+  btn.id = 'scrollTopBtn';
+  btn.innerHTML = '&#8679;';
+  btn.title = 'Back to top';
+  btn.style.cssText = `
+    position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+    background: #2e7d32; color: #fff; border: none; border-radius: 50%;
+    width: 48px; height: 48px; font-size: 24px; cursor: pointer;
+    display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: opacity 0.3s;
+  `;
+  document.body.appendChild(btn);
+
+  window.addEventListener('scroll', () => {
+    btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
