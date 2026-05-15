@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In / Register | Yield Bridge Uganda</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* Auth Page Specific Styles */
+    .auth-container {
+      max-width: 450px;
+      margin: 100px auto 60px;
+      padding: 0 20px;
+    }
+
+    .auth-card {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .auth-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .auth-header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .auth-header p {
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+
+    .form-section {
+      display: none;
+    }
+
+    .form-section.active {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #2d6a4f;
+      box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
+    }
+
+    .error-message {
+      color: #dc2626;
+      font-size: 0.85rem;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .form-group input.error,
+    .form-group select.error {
+      border-color: #dc2626;
+    }
+
+    .forgot-password {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .forgot-password a {
+      color: #2d6a4f;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    .auth-submit {
+      width: 100%;
+      padding: 12px;
+      background: #2d6a4f;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .auth-submit:hover {
+      background: #1b4332;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3);
+    }
+
+    .auth-toggle {
+      text-align: center;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    .auth-toggle button {
+      background: none;
+      border: none;
+      color: #2d6a4f;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+
+    .auth-toggle button:hover {
+      text-decoration: underline;
+    }
+
+    .divider {
+      text-align: center;
+      margin: 24px 0;
+      color: #d1d5db;
+      font-size: 0.9rem;
+    }
+
+    .password-field {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 38px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #6b7280;
+      font-size: 1.1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .auth-container {
+        margin-top: 80px;
+      }
+
+      .auth-card {
+        padding: 30px 20px;
+      }
+
+      .auth-header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.png" alt="Yield Bridge Uganda" class="logo-icon" onerror="this.style.display='none'">
+        <div class="logo-text">
+          YIELD BRIDGE
+          <span>UGANDA</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="farmers.html">Farmers</a></li>
+        <li><a href="marketplace.html">Marketplace</a></li>
+        <li><a href="transporters.html">Transport</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn btn-outline" onclick="switchForm('signin')">Sign In</button>
+        <button class="btn btn-primary" onclick="switchForm('register')">Get Started</button>
+      </div>
+      <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.toggle('active')">
+        <svg width="24" height="24" fill="none" stroke="#2d6a4f" viewBox="0 0 24 24">
+          <path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="farmers.html">Farmers</a>
+    <a href="marketplace.html">Marketplace</a>
+    <a href="transporters.html">Transport</a>
+    <a href="news.html">News</a>
+    <div style="padding-top: 15px; display: flex; gap: 10px;">
+      <button class="btn btn-outline" style="flex: 1;" onclick="switchForm('signin')">Sign In</button>
+      <button class="btn btn-primary" style="flex: 1;" onclick="switchForm('register')">Get Started</button>
+    </div>
+  </div>
+
+  <!-- Auth Section -->
+  <main class="auth-container">
+    <div class="auth-card">
+
+      <!-- SIGN IN FORM -->
+      <div class="form-section active" id="signin-form">
+        <div class="auth-header">
+          <h1>Sign In</h1>
+          <p>Welcome back to Yield Bridge Uganda</p>
+        </div>
+
+        <form id="signinForm">
+          <div class="form-group">
+            <label for="signin-email">Email or Phone Number</label>
+            <input
+              type="text"
+              id="signin-email"
+              placeholder="you@example.com or +256 7XX XXX XXX"
+              required
+            />
+            <div class="error-message" id="signin-email-error"></div>
+          </div>
+
+          <div class="form-group password-field">
+            <label for="signin-password">Password</label>
+            <input
+              type="password"
+              id="signin-password"
+              placeholder="Enter your password"
+              required
+            />
+            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('signin-password')">
+              👁️
+            </button>
+            <div class="error-message" id="signin-password-error"></div>
+          </div>
+
+          <div class="forgot-password">
+            <a href="#forgot">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="auth-submit">Sign In</button>
+        </form>
+
+        <div class="auth-toggle">
+          Don't have an account?
+          <button onclick="switchForm('register')">Get Started</button>
+        </div>
+      </div>
+
+      <!-- REGISTER / GET STARTED FORM -->
+      <div class="form-section" id="register-form">
+        <div class="auth-header">
+          <h1>Get Started</h1>
+          <p>Create your Yield Bridge account</p>
+        </div>
+
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="register-name">Full Name</label>
+            <input
+              type="text"
+              id="register-name"
+              placeholder="e.g., Okello James"
+              required
+            />
+            <div class="error-message" id="register-name-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="register-phone">Phone Number</label>
+            <input
+              type="tel"
+              id="register-phone"
+              placeholder="+256 7XX XXX XXX"
+              required
+            />
+            <div class="error-message" id="register-phone-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="register-email">Email Address</label>
+            <input
+              type="email"
+              id="register-email"
+              placeholder="you@example.com"
+              required
+            />
+            <div class="error-message" id="register-email-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="register-role">I am a:</label>
+            <select id="register-role" required>
+              <option value="">Select your role</option>
+              <option value="farmer">Farmer</option>
+              <option value="buyer">Buyer / Trader</option>
+              <option value="transporter">Transporter</option>
+            </select>
+            <div class="error-message" id="register-role-error"></div>
+          </div>
+
+          <div class="form-group password-field">
+            <label for="register-password">Password</label>
+            <input
+              type="password"
+              id="register-password"
+              placeholder="At least 6 characters"
+              required
+            />
+            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('register-password')">
+              👁️
+            </button>
+            <div class="error-message" id="register-password-error"></div>
+          </div>
+
+          <div class="form-group password-field">
+            <label for="register-confirm">Confirm Password</label>
+            <input
+              type="password"
+              id="register-confirm"
+              placeholder="Re-enter your password"
+              required
+            />
+            <button type="button" class="toggle-password" onclick="togglePasswordVisibility('register-confirm')">
+              👁️
+            </button>
+            <div class="error-message" id="register-confirm-error"></div>
+          </div>
+
+          <button type="submit" class="auth-submit">Create Account</button>
+        </form>
+
+        <div class="auth-toggle">
+          Already have an account?
+          <button onclick="switchForm('signin')">Sign In</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-text">
+          YIELD BRIDGE
+          <span>UGANDA</span>
+        </div>
+        <p>Connecting Uganda's agricultural ecosystem through technology.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="farmers.html">Farmers</a></li>
+          <li><a href="marketplace.html">Marketplace</a></li>
+          <li><a href="transporters.html">Transport</a></li>
+          <li><a href="news.html">Market News</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>Kampala, Uganda</li>
+          <li>info@yieldbridge.ug</li>
+          <li>+256 754 646 055</li>
+          <li><a href="https://wa.me/256754646055" target="_blank" style="color:#25D366;">🟢 WhatsApp Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Yield Bridge Uganda. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Form switching function
+    function switchForm(formType) {
+      const signinForm = document.getElementById('signin-form');
+      const registerForm = document.getElementById('register-form');
+
+      if (formType === 'signin') {
+        signinForm.classList.add('active');
+        registerForm.classList.remove('active');
+        // Clear register form
+        document.getElementById('registerForm').reset();
+        clearErrors();
+      } else if (formType === 'register') {
+        registerForm.classList.add('active');
+        signinForm.classList.remove('active');
+        // Clear signin form
+        document.getElementById('signinForm').reset();
+        clearErrors();
+      }
+    }
+
+    // Toggle password visibility
+    function togglePasswordVisibility(fieldId) {
+      const field = document.getElementById(fieldId);
+      if (field.type === 'password') {
+        field.type = 'text';
+      } else {
+        field.type = 'password';
+      }
+    }
+
+    // Clear all error messages
+    function clearErrors() {
+      document.querySelectorAll('.error-message').forEach(el => {
+        el.classList.remove('show');
+      });
+      document.querySelectorAll('.form-group input, .form-group select').forEach(el => {
+        el.classList.remove('error');
+      });
+    }
+
+    // Show error message for a field
+    function showError(fieldId, message) {
+      const field = document.getElementById(fieldId);
+      const errorElement = document.getElementById(fieldId + '-error');
+      
+      field.classList.add('error');
+      errorElement.textContent = message;
+      errorElement.classList.add('show');
+    }
+
+    // Validate sign in form
+    function validateSignIn() {
+      clearErrors();
+      let isValid = true;
+
+      const email = document.getElementById('signin-email').value.trim();
+      const password = document.getElementById('signin-password').value.trim();
+
+      if (!email) {
+        showError('signin-email', 'Email or phone number is required');
+        isValid = false;
+      }
+
+      if (!password) {
+        showError('signin-password', 'Password is required');
+        isValid = false;
+      } else if (password.length < 6) {
+        showError('signin-password', 'Password must be at least 6 characters');
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    // Validate register form
+    function validateRegister() {
+      clearErrors();
+      let isValid = true;
+
+      const name = document.getElementById('register-name').value.trim();
+      const phone = document.getElementById('register-phone').value.trim();
+      const email = document.getElementById('register-email').value.trim();
+      const role = document.getElementById('register-role').value;
+      const password = document.getElementById('register-password').value.trim();
+      const confirm = document.getElementById('register-confirm').value.trim();
+
+      if (!name) {
+        showError('register-name', 'Full name is required');
+        isValid = false;
+      }
+
+      if (!phone) {
+        showError('register-phone', 'Phone number is required');
+        isValid = false;
+      }
+
+      if (!email) {
+        showError('register-email', 'Email address is required');
+        isValid = false;
+      }
+
+      if (!role) {
+        showError('register-role', 'Please select your role');
+        isValid = false;
+      }
+
+      if (!password) {
+        showError('register-password', 'Password is required');
+        isValid = false;
+      } else if (password.length < 6) {
+        showError('register-password', 'Password must be at least 6 characters');
+        isValid = false;
+      }
+
+      if (!confirm) {
+        showError('register-confirm', 'Please confirm your password');
+        isValid = false;
+      } else if (password !== confirm) {
+        showError('register-confirm', 'Passwords do not match');
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    // Handle sign in form submission
+    document.getElementById('signinForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (validateSignIn()) {
+        alert('Sign in successful! (This is a placeholder - backend integration needed)');
+        // In a real application, send data to backend
+      }
+    });
+
+    // Handle register form submission
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (validateRegister()) {
+        alert('Account created successfully! (This is a placeholder - backend integration needed)');
+        // In a real application, send data to backend
+      }
+    });
+
+    // Check URL parameter on page load to show register form if ?mode=register
+    document.addEventListener('DOMContentLoaded', function() {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('mode') === 'register') {
+        switchForm('register');
+      }
+    });
+  </script>
+
+</body>
+</html>
