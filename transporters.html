@@ -5,6 +5,220 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Transporters | Yield Bridge Uganda</title>
   <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* Tab content display control */
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Modal styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 15px;
+    }
+
+    .modal-header h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 0;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #6b7280;
+    }
+
+    .modal-close:hover {
+      color: #1a1a1a;
+    }
+
+    .modal-info {
+      background: #f3f4f6;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .modal-info p {
+      margin: 5px 0;
+      font-size: 0.95rem;
+      color: #1a1a1a;
+    }
+
+    .modal-info strong {
+      color: #2d6a4f;
+    }
+
+    /* Bid card styles */
+    .bid-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      border-left: 4px solid #2d6a4f;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .bid-card h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 0 0 12px 0;
+    }
+
+    .bid-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    .bid-info strong {
+      color: #1a1a1a;
+    }
+
+    .bid-status {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .bid-status.pending {
+      background: #fed7aa;
+      color: #92400e;
+    }
+
+    .bid-status.accepted {
+      background: #d1fae5;
+      color: #065f46;
+    }
+
+    .bid-status.rejected {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .bid-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .bid-actions .btn {
+      flex: 1;
+      padding: 10px 16px;
+      font-size: 0.85rem;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #6b7280;
+    }
+
+    .empty-state svg {
+      margin: 0 auto 15px;
+      display: block;
+    }
+
+    .empty-state h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1a1a1a;
+    }
+
+    /* Details toggle */
+    .request-details-full {
+      background: #f9fafb;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      display: none;
+    }
+
+    .request-details-full.show {
+      display: block;
+    }
+
+    .details-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #e5e7eb;
+      font-size: 0.9rem;
+    }
+
+    .details-row:last-child {
+      border-bottom: none;
+    }
+
+    .details-label {
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    .details-value {
+      color: #1a1a1a;
+      font-weight: 600;
+    }
+
+    .success-message {
+      background: #e8f5e9;
+      border-left: 4px solid #2d6a4f;
+      padding: 16px;
+      border-radius: 8px;
+      color: #2d6a4f;
+      font-weight: 600;
+      margin-top: 20px;
+      display: none;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
@@ -22,8 +236,8 @@
         <li><a href="news.html">News</a></li>
       </ul>
       <div class="nav-actions">
-        <button class="btn btn-outline">Sign In</button>
-        <button class="btn btn-blue">Get Started</button>
+        <a href="auth.html" class="btn btn-outline">Sign In</a>
+        <a href="auth.html?mode=register" class="btn btn-blue">Get Started</a>
       </div>
       <button class="mobile-menu-btn" onclick="document.getElementById('mobileMenu').classList.toggle('active')">
         <svg width="24" height="24" fill="none" stroke="#2d6a4f" viewBox="0 0 24 24"><path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -56,237 +270,211 @@
     <div class="section-container">
       <!-- Stats -->
       <div class="stats-grid">
-        <div class="stat-card"><div class="label">Active Deliveries</div><div class="value text-blue">3</div></div>
-        <div class="stat-card"><div class="label">Pending Bids</div><div class="value text-yellow">5</div></div>
+        <div class="stat-card"><div class="label">Active Deliveries</div><div class="value text-blue" id="stat-active">3</div></div>
+        <div class="stat-card"><div class="label">Pending Bids</div><div class="value text-yellow" id="stat-pending">5</div></div>
         <div class="stat-card"><div class="label">Completed Trips</div><div class="value text-green">47</div></div>
         <div class="stat-card"><div class="label">Earnings (UGX)</div><div class="value text-dark">12.5M</div></div>
       </div>
 
       <!-- Tabs -->
       <div class="tabs">
-        <button class="tab-btn active active-blue" data-tab="requests">Delivery Requests</button>
-        <button class="tab-btn" data-tab="my-bids">My Bids</button>
-        <button class="tab-btn" data-tab="vehicle">Vehicle Profile</button>
-      </div>
-                 <!-- FEATURE: Delivery Bid Submission Form -->
-<section style="padding:60px 20px; background:#f1f8e9;">
-  <div style="max-width:700px; margin:0 auto;">
-    <h2 style="color:#2e7d32; margin-bottom:8px;">🚛 Submit a Delivery Bid</h2>
-    <p style="color:#666; margin-bottom:32px;">
-      Found a delivery request that suits your route? Fill in your details and submit your bid.
-      The farmer or buyer will review and accept the best offer.
-    </p>
-
-    <div style="background:#fff; border-radius:12px; padding:36px;
-                box-shadow:0 4px 16px rgba(0,0,0,0.08);">
-
-      <div style="margin-bottom:18px;">
-        <label style="display:block; font-weight:600; margin-bottom:6px; color:#333;">
-          Driver Full Name
-        </label>
-        <input type="text" id="bidDriverName" placeholder="e.g. Mugisha Paul"
-          style="width:100%; padding:12px 14px; border:1px solid #ccc; border-radius:8px;
-                 font-size:1rem; box-sizing:border-box;"/>
+        <button class="tab-btn active active-blue" data-target="tab-requests">Delivery Requests</button>
+        <button class="tab-btn" data-target="tab-my-bids">My Bids</button>
+        <button class="tab-btn" data-target="tab-vehicle">Vehicle Profile</button>
       </div>
 
-      <div style="margin-bottom:18px;">
-        <label style="display:block; font-weight:600; margin-bottom:6px; color:#333;">
-          Phone Number
-        </label>
-        <input type="tel" id="bidPhone" placeholder="+256 7XX XXX XXX"
-          style="width:100%; padding:12px 14px; border:1px solid #ccc; border-radius:8px;
-                 font-size:1rem; box-sizing:border-box;"/>
-      </div>
-
-      <div style="margin-bottom:18px;">
-        <label style="display:block; font-weight:600; margin-bottom:6px; color:#333;">
-          Truck Type
-        </label>
-        <select id="bidTruckType"
-          style="width:100%; padding:12px 14px; border:1px solid #ccc; border-radius:8px;
-                 font-size:1rem; box-sizing:border-box;">
-          <option value="">-- Select Truck Type --</option>
-          <option>Small Pickup (up to 1 tonne)</option>
-          <option>Medium Truck (1–5 tonnes)</option>
-          <option>Large Truck (5–10 tonnes)</option>
-          <option>Heavy Trailer (10+ tonnes)</option>
-        </select>
-      </div>
-
-      <div style="display:flex; flex-wrap:wrap; gap:16px; margin-bottom:18px;">
-        <div style="flex:1; min-width:180px;">
-          <label style="display:block; font-weight:600; margin-bottom:6px; color:#333;">
-            Available Date
-          </label>
-          <input type="date" id="bidDate"
-            style="width:100%; padding:12px 14px; border:1px solid #ccc; border-radius:8px;
-                   font-size:1rem; box-sizing:border-box;"/>
-        </div>
-        <div style="flex:1; min-width:180px;">
-          <label style="display:block; font-weight:600; margin-bottom:6px; color:#333;">
-            Your Bid Price (UGX)
-          </label>
-          <input type="number" id="bidPrice" placeholder="e.g. 150000"
-            style="width:100%; padding:12px 14px; border:1px solid #ccc; border-radius:8px;
-                   font-size:1rem; box-sizing:border-box;"/>
-        </div>
-      </div>
-
-      <div style="margin-bottom:24px;">
-        <label style="display:block; font-weight:600; margin-bottom:6px; color:#333;">
-          Notes to Farmer / Buyer
-        </label>
-        <textarea id="bidNotes" rows="3"
-          placeholder="e.g. I can pick up early morning and deliver same day..."
-          style="width:100%; padding:12px 14px; border:1px solid #ccc; border-radius:8px;
-                 font-size:1rem; box-sizing:border-box; resize:vertical;"></textarea>
-      </div>
-
-      <button onclick="submitBid()"
-        style="background:#2e7d32; color:#fff; border:none; padding:14px 36px;
-               border-radius:8px; font-size:1rem; cursor:pointer; font-weight:600;
-               width:100%;">
-        Submit My Bid
-      </button>
-
-      <div id="bidSuccess" style="display:none; margin-top:20px; background:#e8f5e9;
-           border-left:4px solid #2e7d32; padding:16px; border-radius:8px; color:#2e7d32; font-weight:600;">
-        ✅ Your bid has been submitted! The farmer will review and contact you within 24 hours.
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<script>
-  function submitBid() {
-    const name = document.getElementById('bidDriverName').value.trim();
-    const phone = document.getElementById('bidPhone').value.trim();
-    const truck = document.getElementById('bidTruckType').value;
-    const date = document.getElementById('bidDate').value;
-    const price = document.getElementById('bidPrice').value.trim();
-
-    if (!name || !phone || !truck || !date || !price) {
-      alert('Please fill in all fields before submitting your bid.');
-      return;
-    }
-    document.getElementById('bidSuccess').style.display = 'block';
-    document.getElementById('bidSuccess').scrollIntoView({ behavior: 'smooth' });
-  }
-</script> 
-
-      <!-- Requests -->
+      <!-- Requests Tab -->
       <div class="tab-content active" id="tab-requests">
-        <div class="request-card">
-          <div class="request-header">
-            <span class="request-badge badge-new">NEW</span>
-            <span class="request-time">Posted 2 hours ago</span>
+        <div id="requests-container">
+          <div class="request-card" data-delivery-id="1">
+            <div class="request-header">
+              <span class="request-badge badge-new">NEW</span>
+              <span class="request-time">Posted 2 hours ago</span>
+            </div>
+            <h4>Matooke Delivery • 2,000 kg</h4>
+            <div class="request-details">
+              <div class="request-detail">📍 From: <strong>Mukono, Namanve</strong></div>
+              <div class="request-detail">📍 To: <strong>Kampala, Nakasero Market</strong></div>
+              <div class="request-detail">⏰ Deadline: <strong>Tomorrow 8AM</strong></div>
+            </div>
+            <div class="request-meta">
+              <span>~25 km</span>
+              <span>•</span>
+              <span>Budget: <strong class="price">UGX 350,000</strong></span>
+              <span>•</span>
+              <span class="bid-count">7 bids placed</span>
+            </div>
+            <div class="request-details-full">
+              <div class="details-row">
+                <span class="details-label">Cargo Type:</span>
+                <span class="details-value">Matooke (Fresh Bananas)</span>
+              </div>
+              <div class="details-row">
+                <span class="details-label">Weight:</span>
+                <span class="details-value">2,000 kg</span>
+              </div>
+              <div class="details-row">
+                <span class="details-label">Distance:</span>
+                <span class="details-value">~25 km</span>
+              </div>
+              <div class="details-row">
+                <span class="details-label">Budget:</span>
+                <span class="details-value">UGX 350,000</span>
+              </div>
+              <div class="details-row">
+                <span class="details-label">Notes:</span>
+                <span class="details-value">Must arrive fresh. Refrigerated transport preferred.</span>
+              </div>
+            </div>
+            <div class="request-actions">
+              <button class="btn btn-blue" onclick="openBidModal(this, 'Matooke Delivery', 'Mukono, Namanve → Kampala, Nakasero Market')">Place Bid</button>
+              <button class="btn" style="background:#f9fafb; border:1px solid #d1d5db;" onclick="toggleDetails(this)">View Details</button>
+            </div>
           </div>
-          <h4>Matooke Delivery • 2,000 kg</h4>
-          <div class="request-details">
-            <div class="request-detail">📍 From: <strong>Mukono, Namanve</strong></div>
-            <div class="request-detail">📍 To: <strong>Kampala, Nakasero Market</strong></div>
-            <div class="request-detail">⏰ Deadline: <strong>Tomorrow 8AM</strong></div>
-          </div>
-          <div class="request-meta">
-            <span>~25 km</span>
-            <span>•</span>
-            <span>Budget: <strong class="price">UGX 350,000</strong></span>
-            <span>•</span>
-            <span>7 bids placed</span>
-          </div>
-          <div class="request-actions">
-            <button class="btn btn-blue" onclick="openBidModal('Matooke', 'Mukono → Kampala')">Place Bid</button>
-            <button class="btn" style="background:#f9fafb; border:1px solid #d1d5db;">View Details</button>
-          </div>
-        </div>
 
-        <div class="request-card">
-          <div class="request-header">
-            <span class="request-badge badge-urgent">URGENT</span>
-            <span class="request-time">Posted 5 hours ago</span>
+          <div class="request-card" data-delivery-id="2">
+            <div class="request-header">
+              <span class="request-badge badge-urgent">URGENT</span>
+              <span class="request-time">Posted 5 hours ago</span>
+            </div>
+            <h4>Maize Grain Delivery • 5,000 kg</h4>
+            <div class="request-details">
+              <div class="request-detail">📍 From: <strong>Wakiso, Nansana</strong></div>
+              <div class="request-detail">📍 To: <strong>Jinja, Main Market</strong></div>
+              <div class="request-detail">⏰ Deadline: <strong>Today 6PM</strong></div>
+            </div>
+            <div class="request-meta">
+              <span>~80 km</span>
+              <span>•</span>
+              <span>Budget: <strong class="price">UGX 800,000</strong></span>
+              <span>•</span>
+              <span class="bid-count">12 bids placed</span>
+            </div>
+            <div class="request-details-full">
+              <div class="details-row">
+                <span class="details-label">Cargo Type:</span>
+                <span class="details-value">Maize Grain (Dried)</span>
+              </div>
+              <div class="details-row">
+                <span class="details-label">Weight:</span>
+                <span class="details-value">5,000 kg</span>
+              </div>
+              <div class="details-row">
+                <span class="details-label">Distance:</span>
+                <span class="details-value">~80 km</span>
+              </div>
+              <div class="details-row">
+                <span class="details-label">Budget:</span>
+                <span class="details-value">UGX 800,000</span>
+              </div>
+              <div class="details-row">
+                <span class="details-label">Notes:</span>
+                <span class="details-value">Urgent delivery needed. Large vehicle required.</span>
+              </div>
+            </div>
+            <div class="request-actions">
+              <button class="btn btn-blue" onclick="openBidModal(this, 'Maize Grain Delivery', 'Wakiso, Nansana → Jinja, Main Market')">Place Bid</button>
+              <button class="btn" style="background:#f9fafb; border:1px solid #d1d5db;" onclick="toggleDetails(this)">View Details</button>
+            </div>
           </div>
-          <h4>Maize Grain Delivery • 5,000 kg</h4>
-          <div class="request-details">
-            <div class="request-detail">📍 From: <strong>Wakiso, Nansana</strong></div>
-            <div class="request-detail"> To: <strong>Jinja, Main Market</strong></div>
-            <div class="request-detail">⏰ Deadline: <strong>Today 6PM</strong></div>
-          </div>
-          <div class="request-meta">
-            <span>~80 km</span>
-            <span>•</span>
-            <span>Budget: <strong class="price">UGX 800,000</strong></span>
-            <span>•</span>
-            <span>12 bids placed</span>
-          </div>
-          <div class="request-actions">
-            <button class="btn btn-blue" onclick="openBidModal('Maize', 'Wakiso → Jinja')">Place Bid</button>
-            <button class="btn" style="background:#f9fafb; border:1px solid #d1d5db;">View Details</button>
-          </div>
-        </div>
 
-        <div class="request-card">
-          <div class="request-header">
-            <span class="request-badge badge-bulk">BULK</span>
-            <span class="request-time">Posted 1 day ago</span>
-          </div>
-          <h4>Coffee Beans Delivery • 3,000 kg</h4>
-          <div class="request-details">
-            <div class="request-detail">📍 From: <strong>Masaka, Kyotera</strong></div>
-            <div class="request-detail">📍 To: <strong>Kampala, Export Hub</strong></div>
-            <div class="request-detail">⏰ Deadline: <strong>3 days</strong></div>
-          </div>
-          <div class="request-meta">
-            <span>~120 km</span>
-            <span>•</span>
-            <span>Budget: <strong class="price">UGX 1,200,000</strong></span>
-            <span>•</span>
-            <span>5 bids placed</span>
-          </div>
-          <div class="request-actions">
-            <button class="btn btn-blue" onclick="openBidModal('Coffee', 'Masaka → Kampala')">Place Bid</button>
-            <button class="btn" style="background:#f9fafb; border:1px solid #d1d5db;">View Details</button>
+          <div class="request-card" data-delivery-id="3">
+            <div class="request-header">
+              <span class="request-badge badge-bulk">BULK</span>
+              <span class="request-time">Posted 1 day ago</span>
+            </div>
+            <h4>Coffee Beans Delivery • 3,000 kg</h4>
+            <div class="request-details">
+              <div class="request-detail">📍 From: <strong>Masaka, Kyotera</strong></div>
+              <div class="request-detail">📍 To: <strong>Kampala, Export Hub</strong></div>
+              <div class="request-detail">⏰ Deadline: <strong>3 days</strong></div>
+            </div>
+            <div class="request-meta">
+              <span>~120 km</span>
+              <span>•</span>
+              <span>Budget: <strong class="price">UGX 1,200,000</strong></span>
+              <span>•</span>
+              <span class="bid-count">5 bids placed</span>
+            </div>
+            <div class="request-details-full">
+              <div class="details-row">
+                <span class="details-label">Cargo Type:</span>
+                <span class="details-value">Coffee Beans (High Grade)</span>
+              </div>
+              <div class="details-row">
+                <span class="details-label">Weight:</span>
+                <span class="details-value">3,000 kg</span>
+              </div>
+              <div class="details-row">
+                <span class="details-label">Distance:</span>
+                <span class="details-value">~120 km</span>
+              </div>
+              <div class="details-row">
+                <span class="details-label">Budget:</span>
+                <span class="details-value">UGX 1,200,000</span>
+              </div>
+              <div class="details-row">
+                <span class="details-label">Notes:</span>
+                <span class="details-value">Export quality. Climate-controlled transport required.</span>
+              </div>
+            </div>
+            <div class="request-actions">
+              <button class="btn btn-blue" onclick="openBidModal(this, 'Coffee Beans Delivery', 'Masaka, Kyotera → Kampala, Export Hub')">Place Bid</button>
+              <button class="btn" style="background:#f9fafb; border:1px solid #d1d5db;" onclick="toggleDetails(this)">View Details</button>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- My Bids -->
+      <!-- My Bids Tab -->
       <div class="tab-content" id="tab-my-bids">
-        <div style="text-align:center; padding:60px 20px; color:#6b7280;">
-          <svg width="60" height="60" fill="none" stroke="#d1d5db" viewBox="0 0 24 24" style="margin:0 auto 15px;"><path stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-          <h3 style="font-size:1.2rem; font-weight:600; margin-bottom:8px;">No Active Bids</h3>
-          <p>Your submitted bids will appear here.</p>
+        <div id="bids-container">
+          <div class="empty-state">
+            <svg width="60" height="60" fill="none" stroke="#d1d5db" viewBox="0 0 24 24"><path stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.58[...]
+            </svg>
+            <h3>No Active Bids</h3>
+            <p>Browse Delivery Requests to place your first bid</p>
+          </div>
         </div>
       </div>
 
-      <!-- Vehicle Profile -->
+      <!-- Vehicle Profile Tab -->
       <div class="tab-content" id="tab-vehicle">
         <div class="form-card">
           <h2>Vehicle Profile</h2>
-          <form>
+          <form id="vehicleForm">
             <div class="form-grid">
               <div class="form-group">
                 <label>Vehicle Type</label>
-                <select><option>Truck (10-ton)</option><option>Truck (5-ton)</option><option>Van</option><option>Pickup</option></select>
+                <select id="vehicleType" required>
+                  <option value="">Select vehicle type</option>
+                  <option>Truck (10-ton)</option>
+                  <option>Truck (5-ton)</option>
+                  <option>Van</option>
+                  <option>Pickup</option>
+                </select>
               </div>
               <div class="form-group">
                 <label>Registration Number</label>
-                <input type="text" placeholder="e.g., UBA 123X">
+                <input type="text" id="regNumber" placeholder="e.g., UBA 123X" required>
               </div>
               <div class="form-group">
                 <label>Driver's License</label>
-                <input type="text" placeholder="License number">
+                <input type="text" id="licenseNumber" placeholder="License number" required>
               </div>
               <div class="form-group">
                 <label>Years of Experience</label>
-                <input type="number" placeholder="e.g., 5">
+                <input type="number" id="experience" placeholder="e.g., 5" required>
               </div>
               <div class="form-group full-width">
                 <label>Vehicle Photo</label>
-                <div class="upload-area"><p>🚛 Upload vehicle photo</p><input type="file" style="display:none" accept="image/*"></div>
+                <div class="upload-area"><p>🚛 Upload vehicle photo</p><input type="file" id="vehiclePhoto" accept="image/*"></div>
               </div>
             </div>
             <button type="submit" class="btn btn-blue" style="margin-top:20px;">Save Profile</button>
+            <div class="success-message" id="vehicle-success">
+              ✅ Vehicle profile saved successfully!
+            </div>
           </form>
         </div>
       </div>
@@ -298,7 +486,7 @@
     <div class="modal">
       <div class="modal-header">
         <h3>Place Your Bid</h3>
-        <button class="modal-close" onclick="closeBidModal()">✕</button>
+        <button type="button" class="modal-close" onclick="closeBidModal()">✕</button>
       </div>
       <div class="modal-info">
         <p>Delivery: <strong id="modalCrop"></strong></p>
@@ -307,20 +495,21 @@
       <form id="bidForm">
         <div class="form-group">
           <label>Your Bid Amount (UGX)</label>
-          <input type="number" placeholder="e.g., 400000" required>
+          <input type="number" id="bidAmount" placeholder="e.g., 400000" required>
         </div>
         <div class="form-group">
           <label>Estimated Delivery Time</label>
-          <select required>
-            <option>Same Day</option>
-            <option>Within 12 Hours</option>
-            <option>Within 24 Hours</option>
-            <option>2-3 Days</option>
+          <select id="bidTime" required>
+            <option value="">Select delivery time</option>
+            <option value="Same Day">Same Day</option>
+            <option value="Within 12 Hours">Within 12 Hours</option>
+            <option value="Within 24 Hours">Within 24 Hours</option>
+            <option value="2-3 Days">2-3 Days</option>
           </select>
         </div>
         <div class="form-group">
           <label>Vehicle Details</label>
-          <input type="text" placeholder="e.g., Isuzu FVR 10-ton, UBA 123X">
+          <input type="text" id="bidVehicle" placeholder="e.g., Isuzu FVR 10-ton, UBA 123X">
         </div>
         <button type="submit" class="btn btn-blue" style="width:100%; margin-top:15px;">Submit Bid</button>
       </form>
@@ -358,7 +547,7 @@
         <ul>
           <li>Kampala, Uganda</li>
           <li>info@yieldbridge.ug</li>
-           <li>+256 754 646 055</li>
+          <li>+256 754 646 055</li>
           <li><a href="https://wa.me/256754646055" target="_blank" style="color:#25D366;">🟢 WhatsApp Us</a></li>
         </ul>
       </div>
@@ -368,24 +557,252 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
   <script>
-    function openBidModal(crop, route) {
-      document.getElementById('modalCrop').textContent = crop;
+    // ===== DATA STORAGE =====
+    const STORAGE_KEYS = {
+      BIDS: 'yield_bridge_bids',
+      VEHICLE: 'yield_bridge_vehicle',
+      BID_COUNTERS: 'yield_bridge_bid_counters'
+    };
+
+    // Initialize default bid counters
+    function initializeBidCounters() {
+      const stored = localStorage.getItem(STORAGE_KEYS.BID_COUNTERS);
+      if (!stored) {
+        const counters = {
+          '1': 7,
+          '2': 12,
+          '3': 5
+        };
+        localStorage.setItem(STORAGE_KEYS.BID_COUNTERS, JSON.stringify(counters));
+      }
+    }
+
+    // ===== TAB SWITCHING =====
+    function setupTabs() {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const target = this.getAttribute('data-target');
+          
+          // Remove active from all buttons
+          tabBtns.forEach(b => {
+            b.classList.remove('active', 'active-blue');
+          });
+          
+          // Add active to clicked button
+          this.classList.add('active', 'active-blue');
+          
+          // Hide all tab contents
+          document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.remove('active');
+          });
+          
+          // Show target tab content
+          document.getElementById(target).classList.add('active');
+        });
+      });
+    }
+
+    // ===== MODAL FUNCTIONS =====
+    let currentBidDeliveryId = null;
+
+    function openBidModal(btn, deliveryName, route) {
+      const card = btn.closest('.request-card');
+      currentBidDeliveryId = card.getAttribute('data-delivery-id');
+      
+      document.getElementById('modalCrop').textContent = deliveryName;
       document.getElementById('modalRoute').textContent = route;
       document.getElementById('bidModal').classList.add('active');
+      document.getElementById('bidForm').reset();
     }
+
     function closeBidModal() {
       document.getElementById('bidModal').classList.remove('active');
+      currentBidDeliveryId = null;
     }
+
+    // Close modal when clicking outside
+    document.getElementById('bidModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeBidModal();
+      }
+    });
+
+    // ===== VIEW DETAILS TOGGLE =====
+    function toggleDetails(btn) {
+      const card = btn.closest('.request-card');
+      const details = card.querySelector('.request-details-full');
+      details.classList.toggle('show');
+      btn.textContent = details.classList.contains('show') ? 'Hide Details' : 'View Details';
+    }
+
+    // ===== BID SUBMISSION =====
     document.getElementById('bidForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Bid submitted successfully!');
-      closeBidModal();
+
+      const bidAmount = document.getElementById('bidAmount').value.trim();
+      const bidTime = document.getElementById('bidTime').value;
+      const bidVehicle = document.getElementById('bidVehicle').value.trim();
+      const deliveryName = document.getElementById('modalCrop').textContent;
+      const route = document.getElementById('modalRoute').textContent;
+
+      // Validation
+      if (!bidAmount || !bidTime) {
+        alert('Please fill in all required fields');
+        return;
+      }
+
+      // Save bid to localStorage
+      const bids = JSON.parse(localStorage.getItem(STORAGE_KEYS.BIDS) || '[]');
+      const newBid = {
+        id: Date.now(),
+        deliveryName: deliveryName,
+        route: route,
+        bidAmount: bidAmount,
+        bidTime: bidTime,
+        vehicleDetails: bidVehicle,
+        status: 'Pending',
+        createdAt: new Date().toISOString()
+      };
+      bids.push(newBid);
+      localStorage.setItem(STORAGE_KEYS.BIDS, JSON.stringify(bids));
+
+      // Increment bid counter
+      if (currentBidDeliveryId) {
+        const counters = JSON.parse(localStorage.getItem(STORAGE_KEYS.BID_COUNTERS) || '{}');
+        counters[currentBidDeliveryId] = (counters[currentBidDeliveryId] || 0) + 1;
+        localStorage.setItem(STORAGE_KEYS.BID_COUNTERS, JSON.stringify(counters));
+
+        // Update counter on card
+        const card = document.querySelector(`[data-delivery-id="${currentBidDeliveryId}"]`);
+        if (card) {
+          const countEl = card.querySelector('.bid-count');
+          const count = counters[currentBidDeliveryId];
+          countEl.textContent = count + ' bid' + (count !== 1 ? 's' : '') + ' placed';
+        }
+      }
+
+      // Show success message
+      alert('✅ Bid submitted! The farmer will contact you within 24 hours.');
+
+      // Close modal after delay
+      setTimeout(() => {
+        closeBidModal();
+        updateMyBidsTab();
+        updateStats();
+      }, 500);
     });
-    document.getElementById('bidModal').addEventListener('click', function(e) {
-      if (e.target === this) closeBidModal();
+
+    // ===== MY BIDS TAB =====
+    function updateMyBidsTab() {
+      const bids = JSON.parse(localStorage.getItem(STORAGE_KEYS.BIDS) || '[]');
+      const container = document.getElementById('bids-container');
+
+      if (bids.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <svg width="60" height="60" fill="none" stroke="#d1d5db" viewBox="0 0 24 24"><path stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.58[...]
+            </svg>
+            <h3>No Active Bids</h3>
+            <p>Browse Delivery Requests to place your first bid</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '';
+      bids.forEach(bid => {
+        const statusClass = bid.status.toLowerCase();
+        html += `
+          <div class="bid-card">
+            <h4>${bid.deliveryName}</h4>
+            <div class="bid-status ${statusClass}">${bid.status}</div>
+            <div class="bid-info">
+              <div>
+                <strong>Route:</strong><br/>
+                ${bid.route}
+              </div>
+              <div>
+                <strong>Your Bid:</strong><br/>
+                UGX ${bid.bidAmount.toLocaleString()}
+              </div>
+              <div>
+                <strong>Delivery Time:</strong><br/>
+                ${bid.bidTime}
+              </div>
+              <div>
+                <strong>Vehicle:</strong><br/>
+                ${bid.vehicleDetails || 'Not specified'}
+              </div>
+            </div>
+            <div class="bid-actions">
+              <button class="btn" style="background:#fef2f2; color:#dc2626; flex:1;" onclick="cancelBid(${bid.id})">Cancel Bid</button>
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function cancelBid(bidId) {
+      if (confirm('Are you sure you want to cancel this bid?')) {
+        let bids = JSON.parse(localStorage.getItem(STORAGE_KEYS.BIDS) || '[]');
+        bids = bids.filter(bid => bid.id !== bidId);
+        localStorage.setItem(STORAGE_KEYS.BIDS, JSON.stringify(bids));
+        updateMyBidsTab();
+        updateStats();
+      }
+    }
+
+    // ===== STATS UPDATE =====
+    function updateStats() {
+      const bids = JSON.parse(localStorage.getItem(STORAGE_KEYS.BIDS) || '[]');
+      const pendingCount = bids.filter(bid => bid.status === 'Pending').length;
+      document.getElementById('stat-pending').textContent = pendingCount;
+    }
+
+    // ===== VEHICLE PROFILE =====
+    function loadVehicleProfile() {
+      const vehicle = JSON.parse(localStorage.getItem(STORAGE_KEYS.VEHICLE) || 'null');
+      if (vehicle) {
+        document.getElementById('vehicleType').value = vehicle.type || '';
+        document.getElementById('regNumber').value = vehicle.regNumber || '';
+        document.getElementById('licenseNumber').value = vehicle.licenseNumber || '';
+        document.getElementById('experience').value = vehicle.experience || '';
+      }
+    }
+
+    document.getElementById('vehicleForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const vehicle = {
+        type: document.getElementById('vehicleType').value,
+        regNumber: document.getElementById('regNumber').value,
+        licenseNumber: document.getElementById('licenseNumber').value,
+        experience: document.getElementById('experience').value
+      };
+
+      localStorage.setItem(STORAGE_KEYS.VEHICLE, JSON.stringify(vehicle));
+
+      // Show success message
+      const successMsg = document.getElementById('vehicle-success');
+      successMsg.classList.add('show');
+      setTimeout(() => {
+        successMsg.classList.remove('show');
+      }, 3000);
+    });
+
+    // ===== INITIALIZATION =====
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeBidCounters();
+      setupTabs();
+      loadVehicleProfile();
+      updateMyBidsTab();
+      updateStats();
     });
   </script>
+
 </body>
 </html>
