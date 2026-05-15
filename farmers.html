@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Farmers | Yield Bridge Uganda</title>
   <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* Tab content display control */
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
@@ -64,14 +73,14 @@
     <div class="section-container">
       <!-- Tabs -->
       <div class="tabs">
-        <button class="tab-btn active" data-tab="register">Register Profile</button>
-        <button class="tab-btn" data-tab="garden">Map Garden</button>
-        <button class="tab-btn" data-tab="listing">List Produce</button>
-        <button class="tab-btn" data-tab="my-listings">My Listings</button>
+        <button class="tab-btn active" data-target="section-register">Register Profile</button>
+        <button class="tab-btn" data-target="section-map">Map Garden</button>
+        <button class="tab-btn" data-target="section-produce">List Produce</button>
+        <button class="tab-btn" data-target="section-listings">My Listings</button>
       </div>
 
       <!-- Tab: Register -->
-      <div class="tab-content active" id="tab-register">
+      <div class="tab-content active" id="section-register">
         <div class="form-card">
           <h2>Create Your Farmer Profile</h2>
           <form id="farmerForm">
@@ -122,7 +131,7 @@
               <div class="form-group full-width">
                 <label>Profile Photo</label>
                 <div class="upload-area" onclick="document.getElementById('farmerPhoto').click()">
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20[...]
                   <p>Click to upload photo (JPG, PNG)</p>
                   <input type="file" id="farmerPhoto" style="display:none" accept="image/*">
                 </div>
@@ -134,14 +143,14 @@
       </div>
 
       <!-- Tab: Map Garden -->
-      <div class="tab-content" id="tab-garden">
+      <div class="tab-content" id="section-map">
         <div style="background:white; border-radius:16px; padding:40px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
           <h2 style="font-size:1.5rem; font-weight:700; margin-bottom:10px;">Map Your Garden Location</h2>
           <p style="color:#6b7280; margin-bottom:25px;">Use the map below to mark your farm location. Buyers use this to calculate transport costs.</p>
           <div style="display:grid; grid-template-columns: 2fr 1fr; gap:25px;">
             <div style="background:#f0fdf4; border-radius:12px; height:350px; display:flex; align-items:center; justify-content:center; border:2px dashed #2d6a4f;">
               <div style="text-align:center;">
-                <svg width="50" height="50" fill="none" stroke="#2d6a4f" viewBox="0 0 24 24" style="margin:0 auto 10px;"><path stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+                <svg width="50" height="50" fill="none" stroke="#2d6a4f" viewBox="0 0 24 24" style="margin:0 auto 10px;"><path stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 [...]
                 <p style="color:#2d6a4f; font-weight:600;">Interactive Garden Map</p>
                <iframe
                  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d127672.56!2d32.5825!3d0.3476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sug!4v1715000000000"
@@ -172,7 +181,7 @@
       </div>
 
       <!-- Tab: List Produce -->
-      <div class="tab-content" id="tab-listing">
+      <div class="tab-content" id="section-produce">
         <div class="form-card">
           <h2>List Your Produce</h2>
           <form id="produceForm">
@@ -206,7 +215,7 @@
               <div class="form-group full-width">
                 <label>Produce Photos</label>
                 <div class="upload-area" onclick="document.getElementById('producePhotos').click()">
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20[...]
                   <p>Upload photos of your produce (up to 5)</p>
                   <input type="file" id="producePhotos" style="display:none" accept="image/*" multiple>
                 </div>
@@ -225,11 +234,11 @@
       </div>
 
       <!-- Tab: My Listings -->
-      <div class="tab-content" id="tab-my-listings">
+      <div class="tab-content" id="section-listings">
         <div class="products-grid">
           <div class="product-card">
             <div class="product-image">
-              <img src="assets/images/matooke.jpg" alt="Matooke" onerror="this.parentElement.style.background='#d1fae5'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;color:#065f46;\'>🍌</p>'">
+              <img src="assets/images/matooke.jpg" alt="Matooke" onerror="this.parentElement.style.background='#d1fae5'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;[...]
               <span class="product-badge badge-green">Active</span>
               <span class="product-qty">2,000 kg</span>
             </div>
@@ -245,7 +254,7 @@
           </div>
           <div class="product-card">
             <div class="product-image">
-              <img src="assets/images/maize.jpg" alt="Maize" onerror="this.parentElement.style.background='#fef3c7'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;color:#92400e;\'>🌽</p>'">
+              <img src="assets/images/maize.jpg" alt="Maize" onerror="this.parentElement.style.background='#fef3c7'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;colo[...]
               <span class="product-badge badge-green">Active</span>
               <span class="product-qty">5,000 kg</span>
             </div>
@@ -304,6 +313,35 @@
       <p>&copy; 2026 Yield Bridge Uganda. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    // Tab switching functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      
+      tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const targetSectionId = this.getAttribute('data-target');
+          
+          // Remove active class from all buttons
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Hide all tab content sections
+          const tabContents = document.querySelectorAll('.tab-content');
+          tabContents.forEach(content => content.classList.remove('active'));
+          
+          // Show the target section
+          const targetSection = document.getElementById(targetSectionId);
+          if (targetSection) {
+            targetSection.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
 
   <script src="assets/js/main.js"></script>
 </body>
