@@ -83,23 +83,30 @@
       <div class="tab-content active" id="section-register">
         <div class="form-card">
           <h2>Create Your Farmer Profile</h2>
+          <div class="form-error-banner" id="farmerFormErrorBanner"></div>
           <form id="farmerForm">
             <div class="form-grid">
               <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" placeholder="e.g., Okello James" required>
+                <label>Full Name <span class="required-indicator">*</span></label>
+                <input type="text" placeholder="e.g., Okello James" required data-field="fullName" data-validation="fullName">
+                <span class="field-error" style="display: none;"></span>
+                <span class="field-success" style="display: none;">✓</span>
               </div>
               <div class="form-group">
-                <label>Phone Number</label>
-                <input type="tel" placeholder="+256 7XX XXX XXX" required>
+                <label>Phone Number <span class="required-indicator">*</span></label>
+                <input type="tel" placeholder="+256 7XX XXX XXX" required data-field="phone" data-validation="ugandaPhone">
+                <span class="field-error" style="display: none;"></span>
+                <span class="field-success" style="display: none;">✓</span>
               </div>
               <div class="form-group">
                 <label>Email</label>
-                <input type="email" placeholder="farmer@example.com" required>
+                <input type="email" placeholder="farmer@example.com" data-field="email" data-validation="email">
+                <span class="field-error" style="display: none;"></span>
+                <span class="field-success" style="display: none;">✓</span>
               </div>
               <div class="form-group">
-                <label>District</label>
-                <select required>
+                <label>District <span class="required-indicator">*</span></label>
+                <select required data-field="district" data-validation="dropdown">
                   <option value="">Select District</option>
                   <option>Kampala</option>
                   <option>Wakiso</option>
@@ -110,14 +117,16 @@
                   <option>Gulu</option>
                   <option>Lira</option>
                 </select>
+                <span class="field-error" style="display: none;"></span>
+                <span class="field-success" style="display: none;">✓</span>
               </div>
               <div class="form-group full-width">
                 <label>Farm/Garden Location</label>
-                <input type="text" placeholder="Village/Sub-county, e.g., Mukono, Namanve">
+                <input type="text" placeholder="Village/Sub-county, e.g., Mukono, Namanve" data-field="location" data-validation="optional">
               </div>
               <div class="form-group full-width">
-                <label>Primary Crops</label>
-                <div class="checkbox-grid">
+                <label>Primary Crops <span class="required-indicator">*</span></label>
+                <div class="checkbox-grid" data-field="crops" data-validation="checkbox">
                   <label class="checkbox-label"><input type="checkbox"> Matooke</label>
                   <label class="checkbox-label"><input type="checkbox"> Maize</label>
                   <label class="checkbox-label"><input type="checkbox"> Coffee</label>
@@ -127,17 +136,20 @@
                   <label class="checkbox-label"><input type="checkbox"> Soybeans</label>
                   <label class="checkbox-label"><input type="checkbox"> Other</label>
                 </div>
+                <span class="field-error" style="display: none;"></span>
+                <span class="field-success" style="display: none;">✓</span>
               </div>
               <div class="form-group full-width">
                 <label>Profile Photo</label>
                 <div class="upload-area" onclick="document.getElementById('farmerPhoto').click()">
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20[...]
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                   <p>Click to upload photo (JPG, PNG)</p>
                   <input type="file" id="farmerPhoto" style="display:none" accept="image/*">
                 </div>
               </div>
             </div>
             <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Register Profile</button>
+            <div class="form-success-banner" id="farmerFormSuccessBanner" style="display: none;"></div>
           </form>
         </div>
       </div>
@@ -150,13 +162,13 @@
           <div style="display:grid; grid-template-columns: 2fr 1fr; gap:25px;">
             <div style="background:#f0fdf4; border-radius:12px; height:350px; display:flex; align-items:center; justify-content:center; border:2px dashed #2d6a4f;">
               <div style="text-align:center;">
-                <svg width="50" height="50" fill="none" stroke="#2d6a4f" viewBox="0 0 24 24" style="margin:0 auto 10px;"><path stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 [...]
+                <svg width="50" height="50" fill="none" stroke="#2d6a4f" viewBox="0 0 24 24" style="margin:0 auto 10px;"><path stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894l5.447 2.724a2 2 0 001.95 0l5.447-2.724A1 1 0 0121 5.618v10.764a1 1 0 01-.553.894L15 20M9 9h.01M15 9h.01"/></svg>
                 <p style="color:#2d6a4f; font-weight:600;">Interactive Garden Map</p>
                <iframe
-                 src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d127672.56!2d32.5825!3d0.3476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sug!4v1715000000000"
-                 width="100%" height="350" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy"
-                 referrerpolicy="no-referrer-when-downgrade">
-                 </iframe>
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d127672.56!2d32.5825!3d0.3476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sug!4v1715000000000"
+                  width="100%" height="350" style="border:0; border-radius:8px;" allowfullscreen="" loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade">
+                  </iframe>
                 <button class="btn btn-primary" style="margin-top:15px;">Pin My Location</button>
               </div>
             </div>
@@ -184,11 +196,12 @@
       <div class="tab-content" id="section-produce">
         <div class="form-card">
           <h2>List Your Produce</h2>
+          <div class="form-error-banner" id="produceFormErrorBanner"></div>
           <form id="produceForm">
             <div class="form-grid">
               <div class="form-group">
-                <label>Crop Type</label>
-                <select required>
+                <label>Crop Type <span class="required-indicator">*</span></label>
+                <select required data-field="cropType" data-validation="dropdown">
                   <option value="">Select Crop</option>
                   <option>Matooke (Banana)</option>
                   <option>Maize</option>
@@ -199,36 +212,45 @@
                   <option>Cassava</option>
                   <option>Soybeans</option>
                 </select>
+                <span class="field-error" style="display: none;"></span>
+                <span class="field-success" style="display: none;">✓</span>
               </div>
               <div class="form-group">
-                <label>Quantity (kg)</label>
-                <input type="number" placeholder="e.g., 1000" required>
+                <label>Quantity (kg) <span class="required-indicator">*</span></label>
+                <input type="number" placeholder="e.g., 1000" required data-field="quantity" data-validation="quantity">
+                <span class="field-error" style="display: none;"></span>
+                <span class="field-success" style="display: none;">✓</span>
               </div>
               <div class="form-group">
-                <label>Price per kg (UGX)</label>
-                <input type="number" placeholder="e.g., 1500" required>
+                <label>Price per kg (UGX) <span class="required-indicator">*</span></label>
+                <input type="number" placeholder="e.g., 1500" required data-field="price" data-validation="price">
+                <span class="field-error" style="display: none;"></span>
+                <span class="field-success" style="display: none;">✓</span>
               </div>
               <div class="form-group">
-                <label>Harvest Date</label>
-                <input type="date" required>
+                <label>Harvest Date <span class="required-indicator">*</span></label>
+                <input type="date" required data-field="harvestDate" data-validation="futureDate">
+                <span class="field-error" style="display: none;"></span>
+                <span class="field-success" style="display: none;">✓</span>
               </div>
               <div class="form-group full-width">
                 <label>Produce Photos</label>
                 <div class="upload-area" onclick="document.getElementById('producePhotos').click()">
-                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20[...]
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                   <p>Upload photos of your produce (up to 5)</p>
                   <input type="file" id="producePhotos" style="display:none" accept="image/*" multiple>
                 </div>
               </div>
               <div class="form-group full-width">
                 <label>Quality Notes</label>
-                <textarea rows="3" placeholder="Describe quality, organic certification, etc."></textarea>
+                <textarea rows="3" placeholder="Describe quality, organic certification, etc." data-field="notes" data-validation="optional"></textarea>
               </div>
             </div>
             <div style="display:flex; gap:12px; margin-top:20px;">
               <button type="submit" class="btn btn-primary">List Produce</button>
               <button type="reset" class="btn" style="background:#e5e7eb; color:#374151;">Clear</button>
             </div>
+            <div class="form-success-banner" id="produceFormSuccessBanner" style="display: none;"></div>
           </form>
         </div>
       </div>
@@ -238,7 +260,7 @@
         <div class="products-grid">
           <div class="product-card">
             <div class="product-image">
-              <img src="assets/images/matooke.jpg" alt="Matooke" onerror="this.parentElement.style.background='#d1fae5'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;[...]
+              <img src="assets/images/matooke.jpg" alt="Matooke" onerror="this.parentElement.style.background='#d1fae5'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;color:#2d6a4f;font-weight:600;\'>🍌<br>matooke.jpg</p>'">
               <span class="product-badge badge-green">Active</span>
               <span class="product-qty">2,000 kg</span>
             </div>
@@ -254,7 +276,7 @@
           </div>
           <div class="product-card">
             <div class="product-image">
-              <img src="assets/images/maize.jpg" alt="Maize" onerror="this.parentElement.style.background='#fef3c7'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;colo[...]
+              <img src="assets/images/maize.jpg" alt="Maize" onerror="this.parentElement.style.background='#fef3c7'; this.parentElement.innerHTML='<p style=\'padding:60px 0;text-align:center;color:#92400e;font-weight:600;\'>🌽<br>maize.jpg</p>'">
               <span class="product-badge badge-green">Active</span>
               <span class="product-qty">5,000 kg</span>
             </div>
@@ -315,7 +337,172 @@
   </footer>
 
   <script>
-    // Tab switching functionality
+    // ===== FORM VALIDATION FRAMEWORK =====
+    const validationRules = {
+      fullName: {
+        validate: (value) => value.length >= 3 && /^[a-zA-Z\s]+$/.test(value),
+        error: '⚠ Please enter your full name (at least 3 characters)'
+      },
+      ugandaPhone: {
+        validate: (value) => /^(\+256|0)(7|3)\d{8}$/.test(value.replace(/\s/g, '')),
+        error: '⚠ Enter a valid Ugandan phone number e.g. +256 700 123 456'
+      },
+      email: {
+        validate: (value) => value === '' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+        error: '⚠ Enter a valid email address'
+      },
+      quantity: {
+        validate: (value) => value > 0,
+        error: '⚠ Enter a valid quantity greater than 0'
+      },
+      price: {
+        validate: (value) => value > 0,
+        error: '⚠ Enter a valid price in UGX'
+      },
+      dropdown: {
+        validate: (value) => value !== '',
+        error: '⚠ Please select an option'
+      },
+      checkbox: {
+        validate: (element) => Array.from(element.querySelectorAll('input[type="checkbox"]')).some(cb => cb.checked),
+        error: '⚠ Please select at least one crop'
+      },
+      futureDate: {
+        validate: (value) => {
+          const selectedDate = new Date(value);
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+          return selectedDate > today;
+        },
+        error: '⚠ Please select a valid future date'
+      },
+      optional: {
+        validate: () => true,
+        error: ''
+      }
+    };
+
+    function validateField(field) {
+      const validation = field.dataset.validation;
+      const fieldName = field.dataset.field;
+      const rule = validationRules[validation];
+      
+      if (!rule) return true;
+
+      let isValid;
+      if (validation === 'checkbox') {
+        const parent = field;
+        isValid = rule.validate(parent);
+      } else {
+        isValid = rule.validate(field.value);
+      }
+
+      const errorSpan = field.closest('.form-group')?.querySelector('.field-error');
+      const successSpan = field.closest('.form-group')?.querySelector('.field-success');
+
+      if (!isValid) {
+        field.classList.add('invalid');
+        field.classList.remove('valid');
+        if (errorSpan) {
+          errorSpan.textContent = rule.error;
+          errorSpan.style.display = 'block';
+          successSpan.style.display = 'none';
+        }
+      } else {
+        field.classList.remove('invalid');
+        field.classList.add('valid');
+        if (errorSpan) {
+          errorSpan.style.display = 'none';
+          successSpan.style.display = 'block';
+        }
+      }
+
+      return isValid;
+    }
+
+    function validateForm(form) {
+      const fields = form.querySelectorAll('[data-validation]');
+      let isValid = true;
+      const invalidFields = [];
+
+      fields.forEach(field => {
+        if (!validateField(field)) {
+          isValid = false;
+          invalidFields.push(field);
+        }
+      });
+
+      if (!isValid) {
+        const errorBannerId = form.id + 'ErrorBanner';
+        const errorBanner = document.getElementById(errorBannerId);
+        if (errorBanner) {
+          errorBanner.innerHTML = '⚠ Please fix the errors below before submitting.';
+          errorBanner.style.display = 'block';
+        }
+        if (invalidFields.length > 0) {
+          invalidFields[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const btn = form.querySelector('button[type="submit"]');
+          if (btn) {
+            btn.style.animation = 'shake 0.4s ease';
+            setTimeout(() => btn.style.animation = '', 400);
+          }
+        }
+      }
+
+      return isValid;
+    }
+
+    function setupFormValidation(form) {
+      const fields = form.querySelectorAll('[data-validation]');
+      
+      fields.forEach(field => {
+        if (field.dataset.validation === 'checkbox') {
+          const checkboxes = field.querySelectorAll('input[type="checkbox"]');
+          checkboxes.forEach(cb => {
+            cb.addEventListener('blur', () => validateField(field));
+          });
+        } else {
+          field.addEventListener('blur', () => validateField(field));
+        }
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        if (validateForm(form)) {
+          const btn = form.querySelector('button[type="submit"]');
+          const originalText = btn.textContent;
+          btn.textContent = '✅ Submitting...';
+          btn.disabled = true;
+
+          const successBannerId = form.id + 'SuccessBanner';
+          const successBanner = document.getElementById(successBannerId);
+          const errorBanner = document.getElementById(form.id + 'ErrorBanner');
+          
+          if (errorBanner) errorBanner.style.display = 'none';
+          if (successBanner) {
+            successBanner.innerHTML = '✅ Your profile has been submitted successfully! Buyers can now find your produce.';
+            successBanner.style.display = 'block';
+          }
+
+          setTimeout(() => {
+            form.reset();
+            btn.textContent = originalText;
+            btn.disabled = false;
+            if (successBanner) successBanner.style.display = 'none';
+            fields.forEach(f => {
+              f.classList.remove('valid', 'invalid');
+              const errorSpan = f.closest('.form-group')?.querySelector('.field-error');
+              const successSpan = f.closest('.form-group')?.querySelector('.field-success');
+              if (errorSpan) errorSpan.style.display = 'none';
+              if (successSpan) successSpan.style.display = 'none';
+            });
+          }, 2000);
+        }
+      });
+    }
+
+    // ===== TAB SWITCHING =====
     document.addEventListener('DOMContentLoaded', function() {
       const tabButtons = document.querySelectorAll('.tab-btn');
       
@@ -323,23 +510,25 @@
         button.addEventListener('click', function() {
           const targetSectionId = this.getAttribute('data-target');
           
-          // Remove active class from all buttons
           tabButtons.forEach(btn => btn.classList.remove('active'));
-          
-          // Add active class to clicked button
           this.classList.add('active');
           
-          // Hide all tab content sections
           const tabContents = document.querySelectorAll('.tab-content');
           tabContents.forEach(content => content.classList.remove('active'));
           
-          // Show the target section
           const targetSection = document.getElementById(targetSectionId);
           if (targetSection) {
             targetSection.classList.add('active');
           }
         });
       });
+
+      // Setup form validation
+      const farmerForm = document.getElementById('farmerForm');
+      const produceForm = document.getElementById('produceForm');
+      
+      if (farmerForm) setupFormValidation(farmerForm);
+      if (produceForm) setupFormValidation(produceForm);
     });
   </script>
 
